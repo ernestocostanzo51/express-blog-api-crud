@@ -1,24 +1,28 @@
-const posts = require('../data/post')
+const posts = require('../data/postsData')
 
 //index
-const index =('/' ,(req, res) => {
-    let postFiltred = posts
-    if(req.query.tags){
-        postFiltred = posts.filter(post =>post.tags.includes(req.query.tags))
+const index = (req, res) => {
+    let postFiltered = posts;
+    if (req.query.tags) {
+        postFiltered = posts.filter(post => post.tags.includes(req.query.tags));
     }
-    res.json(postFiltred)
-})
-
+    res.json(postFiltered);
+};
 const show = (req, res) => {
     const id = parseInt(req.params.id);
     const post = posts.find(p => p.id === id);
+    
     if (!post) {
-        return res.status(404).json({ error: "Post non trovato" });
+        return res.status(404).json({
+            error: "Post non trovato",
+            message: `Nessun post trovato con id ${id}`
+        });
     }
-    res.json(posts);
-}
+    
+    res.json(post);
+};
 
-;
+
 
 const store = (req, res) => {
     res.send('Creazione nuovo post');
