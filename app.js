@@ -5,6 +5,9 @@ const postsRouter = require('./routers/posts')
 
 app.use('/posts', postsRouter)
 
+app.get('/' , (req , res ) =>{
+    res.send('HOMEPAGE')
+})
 app.listen(port, () => {
     console.log(`Server in ascolto su http://localhost:${port}`);
 });
