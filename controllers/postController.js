@@ -38,7 +38,11 @@ const posts = [
 
 //index
 const index =('/' ,(req, res) => {
-    res.json(posts)
+    let postFiltred = posts
+    if(req.query.tags){
+        postFiltred = posts.filter(post =>post.tags.includes(req.query.tags))
+    }
+    res.json(postFiltred)
 })
 
 const show = (req, res) => {
@@ -47,8 +51,10 @@ const show = (req, res) => {
     if (!post) {
         return res.status(404).json({ error: "Post non trovato" });
     }
-    res.json(post);
-};
+    res.json(posts);
+}
+
+;
 
 const store = (req, res) => {
     res.send('Creazione nuovo post');
