@@ -39,9 +39,9 @@ const posts = [
     }
 ];
 
-
+//index
 router.get('/' ,(req, res) => {
-    res.send(posts)
+    res.json(posts)
 })
 
 router.get('/:id', (req, res) => {
