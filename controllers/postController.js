@@ -27,14 +27,23 @@ const show = (req, res) => {
 
 
 const store = (req, res) => {
-    res.json({
-        titolo:"",
-        contenuto:"",
-        immagine:"",
-        tags:[""]
-    });
-    console.log(req.body)
+
+    const newId = posts[posts.length - 1].id + 1;
+    const newPost = {
+        id: newId,
+        titolo: req.body.titolo,
+        contenuto: req.body.tags,
+        immagine: req.body.immagine,
+        tags: req.body.tags
+    };
+    
+    posts.push(newPost)
+
+    console.log(posts)
     res.send('creazione nuovo post')
+
+res.status(201);
+  res.json(newPizza);
 };
 
 
