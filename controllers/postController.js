@@ -25,7 +25,12 @@ const show = (req, res) => {
 
 
 const store = (req, res) => {
-    res.send('Creazione nuovo post');
+    res.json({
+        titolo:"",
+        contenuto:"",
+        immagine:"",
+        tags:[""]
+    });
 };
 
 
@@ -55,7 +60,7 @@ const id = parseInt(req.params.id)
   }
   menu.splice(menu.indexOf(pizza), 1);
 };
-;
+
 
 module.exports = { index, show, store, update, modify, destroy };
 
