@@ -43,12 +43,30 @@ const store = (req, res) => {
     res.send('creazione nuovo post')
 
 res.status(201);
-  res.json(newPizza);
+res.json(newPizza);
+
 };
 
 
 const update = (req, res) => {
-    res.send(`Modifica totale post ${req.params.id}`);
+    const id = parseInt(req.params.id)
+    const post = posts.find(post => post.id === id)
+
+    if (!post) {
+    res.status(404);
+ 
+    return res.json({
+      error: "Not Found",
+      message: "Post non trovato"
+    })
+  }
+
+  post.titolo = req.body.titolo
+  post.contenuto = req.body.contenuto
+  post.immagine = req.body.immagine
+  post.tags = req.body.tags
+
+  console.log(post)
 };
 
 
