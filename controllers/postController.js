@@ -23,6 +23,8 @@ const show = (req, res) => {
 };
 
 
+	
+
 
 const store = (req, res) => {
     res.json({
@@ -31,6 +33,8 @@ const store = (req, res) => {
         immagine:"",
         tags:[""]
     });
+    console.log(req.body)
+    res.send('creazione nuovo post')
 };
 
 
