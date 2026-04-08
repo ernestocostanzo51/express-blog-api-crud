@@ -1,6 +1,6 @@
 const posts = require('../data/postsData')
 
-//index
+
 const index = (req, res) => {
     let postFiltered = posts;
     if (req.query.tags) {
@@ -40,8 +40,22 @@ const modify = (req, res) => {
 
 
 const destroy = (req, res) => {
-    res.send(`Eliminazione post ${req.params.id}`);
+const id = parseInt(req.params.id)
+  const pizza = menu.find(pizza => pizza.id === id);
+ 
+  if (!pizza) {
+    res.status(404);
+ 
+     res.json({
+         status: 404,
+      error: "Not Found",
+      message: "Pizza non trovata"
+     }
+     )
+  }
+  menu.splice(menu.indexOf(pizza), 1);
 };
+;
 
 module.exports = { index, show, store, update, modify, destroy };
 
