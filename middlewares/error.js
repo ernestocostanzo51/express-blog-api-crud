@@ -5,7 +5,7 @@ const notFound = (req, res, next) => {
     });
 };
 
-// Gestione errori generici del server (500)
+
 const errorsHandler = (err, req, res, next) => {
     res.status(500).json({
         error: "Internal Server Error",
@@ -13,7 +13,7 @@ const errorsHandler = (err, req, res, next) => {
     });
 };
 
-// Esportiamo entrambi
+
 module.exports = {
     notFound,
     errorsHandler

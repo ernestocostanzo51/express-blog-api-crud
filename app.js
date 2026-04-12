@@ -4,7 +4,9 @@ const port = 3000
 const postsRouter = require('./routers/postsRouter')
 
 app.use(express.json());
-
+const { notFound, errorsHandler } = require('./middlewares/error');
+app.use(notFound)
+app.use(errorsHandler)
 app.use('/posts', postsRouter)
 
 app.get('/' , (req , res ) =>{
