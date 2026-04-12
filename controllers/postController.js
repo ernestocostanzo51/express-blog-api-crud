@@ -32,18 +32,14 @@ const store = (req, res) => {
     const newPost = {
         id: newId,
         titolo: req.body.titolo,
-        contenuto: req.body.tags,
+        contenuto: req.body.contenuto,
         immagine: req.body.immagine,
         tags: req.body.tags
     };
     
-    posts.push(newPost)
-
-    console.log(posts)
-    res.send('creazione nuovo post')
-
-res.status(201);
-res.json(newPizza);
+    posts.push(newPost);
+    console.log(posts);
+    res.status(201).json(newPost);
 
 };
 
